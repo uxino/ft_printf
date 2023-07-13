@@ -89,7 +89,7 @@ int ft_puthex(unsigned long nbr, char *p, unsigned int a)
 int ft_putpointer(void *p)
 {
 	int len;
-
+	// char *p = "b";
 	len = 0;
 	len += ft_putstr("0x");
 	len += ft_puthex((unsigned long)p,"0123456789abcdef", 16);
