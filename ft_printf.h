@@ -5,9 +5,6 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-//silinecek includeler
-# include <stdio.h> 
-
 int		ft_printf(const char *str, ...);
 int		ft_putchar(char c);
 int		ft_putstr(char *s);
