@@ -1,15 +1,9 @@
 #include "ft_printf.h"
 
-int ft_putchar(char c)
-{
-    write(1, &c, 1);
-    return (1);
-}
-
 int	ft_putstr(char *str)
 {
 	int	count;
-	int i;
+	int	i;
 
 	count = 0;
 	i = 0;
@@ -23,18 +17,18 @@ int	ft_putstr(char *str)
 		count += ft_putchar(str[i]);
 		i++;
 	}
-	return(count);
+	return (count);
 }
 
-
-int ft_putunbr(unsigned int n)
+int	ft_putunbr(unsigned int n)
 {
-	char	c;
-	long 	len;
+	unsigned char	c;
+	static int		len;
 
 	len = 0;
 	if (n < 10)
 	{
+		len = 0;
 		c = n + '0';
 		len += ft_putchar(c);
 	}
@@ -69,29 +63,23 @@ int	ft_putnbr(int n)
 	return (count);
 }
 
-int ft_puthex(unsigned long nbr, char *p, unsigned int a)
+int	ft_puthex(unsigned long nbr, char *p, unsigned int a)
 {
-    if (a == 16)
-	{
-    	if (nbr >= 16)
-        	ft_puthex(nbr / 16, p, 16);
-    	ft_putchar(p[nbr % 16]);
-	}
-	else if (a == 10)
-	{
-    	if (nbr >= 0)
-        	ft_puthex(nbr / 10, p, 10);
-    	ft_putchar(p[nbr % 10]);
-	}
-	return (1);
+	int	count;
+
+	count = 0;
+	if (nbr >= a)
+		count += ft_puthex(nbr / a, p, a);
+	ft_putchar(p[nbr % a]);
+	return (count + 1);
 }
 
-int ft_putpointer(void *p)
+int	ft_putpointer(void *p)
 {
-	int len;
-	// char *p = "b";
+	int	len;
+
 	len = 0;
 	len += ft_putstr("0x");
-	len += ft_puthex((unsigned long)p,"0123456789abcdef", 16);
+	len += ft_puthex((unsigned long)p, "0123456789abcdef", 16);
 	return (len);
 }
