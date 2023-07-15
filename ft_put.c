@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_put.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: museker <museker@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2023/07/14 19:19:18 by museker           #+#    #+#             */
+/*   Updated: 2023/07/15 15:38:48 by museker          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_printf.h"
 
 int	ft_putstr(char *str)
@@ -22,21 +34,15 @@ int	ft_putstr(char *str)
 
 int	ft_putunbr(unsigned int n)
 {
-	unsigned char	c;
-	static int		len;
+	int		len;
 
 	len = 0;
 	if (n < 10)
-	{
-		len = 0;
-		c = n + '0';
-		len += ft_putchar(c);
-	}
+		len += ft_putchar(n + '0');
 	else
 	{
-		ft_putunbr(n / 10);
-		c = (n % 10) + '0';
-		len += ft_putchar(c);
+		len += ft_putunbr(n / 10);
+		len += ft_putchar(n % 10 + '0');
 	}
 	return (len);
 }
