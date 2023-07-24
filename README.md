@@ -1,5 +1,5 @@
-# printf
-# The printf implementation, which is the second project of the 42 school.
+# ft_printf
+# The ft_printf implementation, which is the second project of the 42 school.
 # ft_printf
 # Re-writing libc's printf function from scratch
 # you can build this project by typing:
